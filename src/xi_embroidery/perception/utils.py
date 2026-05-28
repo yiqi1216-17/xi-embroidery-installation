@@ -15,11 +15,7 @@ def resize_max_side(image: np.ndarray, max_size: int) -> np.ndarray:
     )
 
 
-def resize_to_fit(
-    image: np.ndarray,
-    max_width: int,
-    max_height: int,
-) -> np.ndarray:
+def resize_to_fit(image: np.ndarray, max_width: int, max_height: int) -> np.ndarray:
     height, width = image.shape[:2]
     scale = min(max_width / width, max_height / height, 1.0)
     if scale >= 1.0:

@@ -1,0 +1,29 @@
+# 环境变量
+.env
+.env.local
+
+# 依赖目录
+node_modules/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 系统文件
+.DS_Store
+
+# 日志文件
+*.log
+
+# 构建产物
+dist/
+build/
+.next/
+
+# 日志与运行时状态
+logs/
+current_video_path.txt
+
+# 组会材料（PDF 等，不上传仓库）
+组会/
+

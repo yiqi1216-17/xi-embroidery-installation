@@ -1,0 +1,22 @@
+{
+  "project": "xi-embroidery-pdp-installation",
+  "title": "绣纹流光·粒影生花",
+  "description": "锡绣 P-D-P 互动装置 — 14 纹样感知层资源清单",
+  "pattern_count": 13,
+  "sequence_length": 5,
+  "patterns": [
+    {"id": "video1", "reference": "image1.png", "coordinates": {"x": 0.06, "y": -0.04}},
+    {"id": "video2", "reference": "image2.png", "coordinates": {"x": -0.18, "y": 0.155}},
+    {"id": "video3", "reference": "image3.png", "coordinates": {"x": 0.25, "y": -0.2}},
+    {"id": "video4", "reference": "image4.png", "coordinates": {"x": -0.42, "y": 0.03}},
+    {"id": "video5", "reference": "image5.png", "coordinates": {"x": -0.01, "y": 0.09}},
+    {"id": "video6", "reference": "image6.png", "coordinates": {"x": -0.07, "y": 0.185}},
+    {"id": "video7", "reference": "image7.png", "coordinates": {"x": -0.26, "y": 0.12}},
+    {"id": "video8", "reference": "image8.png", "coordinates": {"x": -0.27, "y": -0.02}},
+    {"id": "video9", "reference": "image9.png", "coordinates": {"x": 0.15, "y": 0.14}},
+    {"id": "video10", "reference": "image10.png", "coordinates": {"x": -0.03, "y": -0.14}},
+    {"id": "video11", "reference": "image11.png", "coordinates": {"x": 0.34, "y": -0.02}},
+    {"id": "video12", "reference": "image12.png", "coordinates": {"x": 0.42, "y": 0.11}},
+    {"id": "video13", "reference": "image13.png", "coordinates": {"x": -0.25, "y": -0.158}}
+  ]
+}

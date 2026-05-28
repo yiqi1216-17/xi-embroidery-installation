@@ -1,9 +1,0 @@
-# 方式一：一键启动（识别 + 显示，无需 TouchDesigner）
-cd "/Users/mayiqi/Desktop/SJT/25春/AI装置艺术/本组/TD_project/Python文件"
-python3 run_local.py
-
-# 方式二：分两个终端
-# 终端1 - 识别端（摄像头 + SIFT）
-python3 recognition_control.py
-# 终端2 - 显示端（底图视频 + 叠加图层）
-python3 display_viewer.py
