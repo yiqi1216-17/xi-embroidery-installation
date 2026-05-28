@@ -1,0 +1,7 @@
+{
+  "include": ["Python文件/**/*.py", "cv2"],
+  "exclude": ["**/__pycache__"],
+  "typeCheckingMode": "basic",
+  "reportMissingImports": true,
+  "extraPaths": ["."]
+}

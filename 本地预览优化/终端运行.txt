@@ -1,0 +1,13 @@
+# 本地预览优化版
+
+cd "/Users/mayiqi/Desktop/SJT/25春/AI装置艺术/本组/TD_project/本地预览优化"
+python3 run_local.py
+
+# 识别不准：确认 config.py 里
+# RECOGNITION_MODE = "accurate"   # 与原版 Python文件/ 一致
+# VERBOSE_MATCH = True            # 临时打开，看各 video 匹配比率
+
+# 仍卡但想保持精度：只加大 MATCH_INTERVAL_SEC = 0.8，不要改 accurate 参数
+
+# 纹样太大（只影响显示，不影响识别）：
+# OVERLAY_MAX_WIDTH_RATIO = 0.22
