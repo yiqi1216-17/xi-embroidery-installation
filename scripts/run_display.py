@@ -1,21 +1,17 @@
 import argparse
-import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
+from _bootstrap import *  # noqa: F403
 
-from xi_embroidery.display.viewer import DisplayViewer
-from xi_embroidery.settings import load_settings
+from display.viewer import DisplayViewer
+from settings import load_settings
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="锡绣装置 — 本地显示端")
-    parser.add_argument("--mode", choices=["accurate", "fast"], default="accurate")
+    parser.add_argument("--mode", choices=["exhibition", "dev"], default="exhibition")
     args = parser.parse_args()
 
-    settings = load_settings(args.mode)
-    DisplayViewer(settings).run()
+    DisplayViewer(load_settings(args.mode)).run()
 
 
 if __name__ == "__main__":

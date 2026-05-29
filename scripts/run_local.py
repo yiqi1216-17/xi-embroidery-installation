@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="锡绣装置 — 一键启动识别 + 显示")
-    parser.add_argument("--mode", choices=["accurate", "fast"], default="accurate")
+    parser.add_argument("--mode", choices=["exhibition", "dev"], default="exhibition")
     args = parser.parse_args()
 
     perception = subprocess.Popen(

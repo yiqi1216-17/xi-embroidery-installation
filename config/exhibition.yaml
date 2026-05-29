@@ -1,0 +1,32 @@
+# 展览部署 — 识别精度优先
+recognition_mode: exhibition
+match_interval_sec: 0.5
+similarity_threshold: 0.05
+similarity_threshold_hold: 0.03
+vote_count: 3
+verbose_match: false
+sequence_interval_sec: 5
+
+camera:
+  width: 1280
+  height: 720
+  preview_width: 640
+  device: 0
+
+perception:
+  reference_max_size: 0
+  sift_max_features: 0
+  flann_checks: 50
+  match_frame_scale: 1.0
+  use_preview_assets: false
+
+display:
+  width: 1280
+  height: 720
+  overlay_max_width_ratio: 0.30
+  overlay_max_height_ratio: 0.42
+  use_static_background: true
+  use_preview_assets: false
+
+output:
+  driver: file

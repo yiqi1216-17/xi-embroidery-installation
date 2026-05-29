@@ -24,6 +24,13 @@ build/
 logs/
 current_video_path.txt
 
+# 本地生成的 preview 资源（运行 scripts/generate_preview_assets.py 生成）
+assets/preview/
+
+# 大体积媒体（建议 Git LFS 或外置下载，见 README）
+*.mp4
+底图视频4K.mp4
+
 # 组会材料（PDF 等，不上传仓库）
 组会/
 

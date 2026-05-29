@@ -1,22 +1,100 @@
 {
   "project": "xi-embroidery-pdp-installation",
   "title": "绣纹流光·粒影生花",
-  "description": "锡绣 P-D-P 互动装置 — 14 纹样感知层资源清单",
+  "description": "锡绣 P-D-P 装置 — 13 张识别卡片 + 13 组序列帧（语义库共 14 种纹样概念，本仓库感知层对应 video1–video13）",
   "pattern_count": 13,
   "sequence_length": 5,
   "patterns": [
-    {"id": "video1", "reference": "image1.png", "coordinates": {"x": 0.06, "y": -0.04}},
-    {"id": "video2", "reference": "image2.png", "coordinates": {"x": -0.18, "y": 0.155}},
-    {"id": "video3", "reference": "image3.png", "coordinates": {"x": 0.25, "y": -0.2}},
-    {"id": "video4", "reference": "image4.png", "coordinates": {"x": -0.42, "y": 0.03}},
-    {"id": "video5", "reference": "image5.png", "coordinates": {"x": -0.01, "y": 0.09}},
-    {"id": "video6", "reference": "image6.png", "coordinates": {"x": -0.07, "y": 0.185}},
-    {"id": "video7", "reference": "image7.png", "coordinates": {"x": -0.26, "y": 0.12}},
-    {"id": "video8", "reference": "image8.png", "coordinates": {"x": -0.27, "y": -0.02}},
-    {"id": "video9", "reference": "image9.png", "coordinates": {"x": 0.15, "y": 0.14}},
-    {"id": "video10", "reference": "image10.png", "coordinates": {"x": -0.03, "y": -0.14}},
-    {"id": "video11", "reference": "image11.png", "coordinates": {"x": 0.34, "y": -0.02}},
-    {"id": "video12", "reference": "image12.png", "coordinates": {"x": 0.42, "y": 0.11}},
-    {"id": "video13", "reference": "image13.png", "coordinates": {"x": -0.25, "y": -0.158}}
+    {
+      "id": "video1",
+      "reference": "image1.png",
+      "references": ["image1.png"],
+      "coordinates": {"x": 0.06, "y": -0.04},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video2",
+      "reference": "image2.png",
+      "references": ["image2.png"],
+      "coordinates": {"x": -0.18, "y": 0.155},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video3",
+      "reference": "image3.png",
+      "references": ["image3.png"],
+      "coordinates": {"x": 0.25, "y": -0.2},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video4",
+      "reference": "image4.png",
+      "references": ["image4.png"],
+      "coordinates": {"x": -0.42, "y": 0.03},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video5",
+      "reference": "image5.png",
+      "references": ["image5.png"],
+      "coordinates": {"x": -0.01, "y": 0.09},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video6",
+      "reference": "image6.png",
+      "references": ["image6.png"],
+      "coordinates": {"x": -0.07, "y": 0.185},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video7",
+      "reference": "image7.png",
+      "references": ["image7.png"],
+      "coordinates": {"x": -0.26, "y": 0.12},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video8",
+      "reference": "image8.png",
+      "references": ["image8.png"],
+      "coordinates": {"x": -0.27, "y": -0.02},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video9",
+      "reference": "image9.png",
+      "references": ["image9.png"],
+      "coordinates": {"x": 0.15, "y": 0.14},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video10",
+      "reference": "image10.png",
+      "references": ["image10.png"],
+      "coordinates": {"x": -0.03, "y": -0.14},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video11",
+      "reference": "image11.png",
+      "references": ["image11.png"],
+      "coordinates": {"x": 0.34, "y": -0.02},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video12",
+      "reference": "image12.png",
+      "references": ["image12.png"],
+      "coordinates": {"x": 0.42, "y": 0.11},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    },
+    {
+      "id": "video13",
+      "reference": "image13.png",
+      "references": ["image13.png"],
+      "coordinates": {"x": -0.25, "y": -0.158},
+      "display": {"scale": 1.0, "offset_x": 0.0, "offset_y": 0.0}
+    }
   ]
 }

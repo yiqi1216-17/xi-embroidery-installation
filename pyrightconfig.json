@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*.py", "scripts/**/*.py", "tests/**/*.py", "cv2"],
+  "include": ["src/**/*.py", "scripts/**/*.py", "tests/**/*.py"],
   "exclude": ["**/__pycache__"],
   "typeCheckingMode": "basic",
   "reportMissingImports": true,

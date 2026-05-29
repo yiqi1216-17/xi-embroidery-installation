@@ -1,95 +1,105 @@
 # Xi Embroidery P-D-P Installation
 
-**绣纹流光·粒影生花** — 锡绣非遗 AI+AR 互动装置的 **感知层与本地显示层** 代码。
+**绣纹流光·粒影生花** — 锡绣非遗 AI+AR 互动装置的 **Python 感知层 + 本地显示层**。
 
-对应 P-D-P 范式中的 **Physical → Digital** 链路：用户举起纹样卡片 → 摄像头识别 → 驱动 TouchDesigner / 本地画布显示。
-
-## 系统架构
+## 项目结构
 
 ```
-用户卡片 → 摄像头
-              ↓
-     perception/   SIFT + FLANN 匹配（13 纹样）
-              ↓
-     orchestrator/ 多帧投票 + 序列轮播
-              ↓
-     drivers/       写入 current_video_path.txt
-              ↓
-     display/       本地 OpenCV 预览（或 TouchDesigner 读取）
-```
-
-完整装置还包含（不在本仓库）：
-- **渲染层**：TouchDesigner 粒子系统
-- **生成层**：Stable Diffusion + LoRA
-- **体验层**：Kivicube WebAR
-
-## 目录结构
-
-```
-├── assets/manifest.json    # 13 纹样元数据（坐标、参考图）
+TD_project/
+├── assets/
+│   ├── manifest.json       # 纹样元数据
+│   ├── preview/            # dev 模式轻量资源（脚本生成）
+│   ├── audio/              # 装置背景音乐（TouchDesigner 引用）
+│   └── image*.png, video*   # 识别参考图与序列帧
 ├── config/
-│   ├── accurate.yaml       # 展览精度模式
-│   └── fast.yaml           # 本地流畅模式
-├── src/xi_embroidery/      # 核心包
-├── scripts/                # 启动脚本
+│   ├── exhibition.yaml     # 展览模式
+│   ├── dev.yaml            # 本地开发模式
+│   └── overlay_calibration.yaml
+├── src/
+│   ├── paths.py            # 路径常量
+│   ├── settings.py         # 配置加载
+│   ├── manifest.py         # 纹样清单
+│   ├── perception/         # SIFT 识别
+│   ├── orchestrator/       # 状态机 + 日志
+│   ├── drivers/            # file / http / websocket 输出
+│   └── display/            # 本地 OpenCV 预览
+├── scripts/                # 启动与工具脚本
 ├── tests/
-└── requirements.txt
+└── TD程序/                 # TouchDesigner 工程（渲染层，非 Python）
 ```
 
-## 安装
+## 安装与运行
 
 ```bash
-cd TD_project
 python3 -m pip install -r requirements.txt
+
+# 展览模式
+python3 scripts/run_local.py --mode exhibition
+
+# 本地开发（先生成 preview）
+python3 scripts/generate_preview_assets.py
+python3 scripts/run_local.py --mode dev
 ```
 
-需要 OpenCV SIFT（`opencv-contrib-python` 已包含在 requirements 中）。
+## 配置模式
 
-## 运行
+| 模式 | 用途 |
+|------|------|
+| `exhibition` | 展览部署，全精度 SIFT |
+| `dev` | 本地开发，降采样 + preview 资源 |
 
-```bash
-# 一键：识别 + 显示（展览精度）
-python3 scripts/run_local.py --mode accurate
+## 脚本
 
-# 本地流畅预览
-python3 scripts/run_local.py --mode fast
+| 命令 | 说明 |
+|------|------|
+| `run_perception.py` | 仅识别端 |
+| `run_display.py` | 仅显示端 |
+| `test_offline_recognition.py` | 离线识别测试 |
+| `calibrate_overlay.py` | 纹样位置标定 |
+| `generate_preview_assets.py` | 生成 preview 资源 |
+| `http_bridge_server.py` | HTTP → txt 桥接 |
 
-# 仅识别端 / 仅显示端
-python3 scripts/run_perception.py --mode accurate
-python3 scripts/run_display.py --mode accurate
-```
+## 仓库边界
 
-按 `q` 退出各窗口。
+| 在本仓库 | 不在本仓库 |
+|---------|-----------|
+| `src/` Python 感知 + 显示 | TouchDesigner 粒子（`TD程序/`） |
+| `assets/` 纹样与音频 | Stable Diffusion + LoRA |
+| 文件/HTTP 输出驱动 | Kivicube WebAR |
 
-## 配置说明
+## 大资源说明
 
-| 参数 | accurate | fast |
-|------|----------|------|
-| 参考图缩放 | 不缩小 | 600px |
-| 摄像头帧缩放 | 原尺寸 | 35% |
-| SIFT 特征点 | 不限制 | 250 |
-| 识别间隔 | 0.5s | 0.8s |
-| 多帧投票 | 3 次 | 2 次 |
-
-编辑 `config/accurate.yaml` 或 `config/fast.yaml` 即可调参，无需改代码。
-
-## 与 TouchDesigner 对接
-
-识别结果写入项目根目录 `current_video_path.txt`：
-
-```
-video10,-0.03,-0.14,/path/to/assets/video10-1.png
-```
-
-TouchDesigner 定时读取该文件，按坐标叠加对应序列帧。
+- `assets/video*-*.png`、`底图视频4K.mp4` 体积大，建议 Git LFS（见 `.gitattributes`）
+- 本地开发用 `assets/preview/`，不依赖原图
 
 ## 测试
 
 ```bash
 python3 -m unittest discover -s tests -v
+python3 scripts/test_offline_recognition.py --mode exhibition
 ```
 
-## 日志
+## 添加多张参考图（手机/侧拍）
 
-识别事件写入 `logs/events.jsonl`（用于体验分析，已加入 `.gitignore`）。
+编辑 `assets/manifest.json`，为某纹样增加 `references` 数组：
+
+```json
+"references": ["image7.png", "image7-phone.png", "image7-angle.png"]
+```
+
+把额外参考图放进 `assets/` 即可；识别时会取多张参考图中匹配比最高的一次。
+
+## HTTP 驱动用法
+
+1. 终端 A：`python3 scripts/http_bridge_server.py`
+2. 在 `config/exhibition.yaml` 中设置：
+
+```yaml
+output:
+  driver: http
+```
+
+3. 终端 B：`python3 scripts/run_perception.py --mode exhibition`
+
+桥接服务会把 POST 结果写入 `current_video_path.txt`，TouchDesigner 仍可轮询该文件。
 
